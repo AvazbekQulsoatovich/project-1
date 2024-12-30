@@ -10,69 +10,42 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     @if (auth()->user()->role->name == 'manager')
-                    {{ __("You're manager") }}
-                     <!-- component -->
-<!-- post card -->
-<div class="flex bg-white shadow-lg rounded-lg mt-4 mx-4 md:mx-auto my-56 max-w-xl md:max-w-2xl "><!--horizantil margin is just for display-->
-   <div class="flex items-start px-4 py-6">
-      <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="avatar">
-      <div class="">
-         <div class="flex items-center  justify-between">
-            <h2 class="text-lg font-semibold text-gray-900  mt-1">Brad Adams </h2>
-            <small class="text-sm text-gray-700">22h ago</small>
-         </div>
-         <p class="text-gray-700">Joined 12 SEP 2012. </p>
-         <p class="mt-3 text-gray-700 text-sm">
-            Lorem ipsum, dolor sit amet conse. Saepe optio minus rem dolor sit amet!
-         </p>
-         <div class="mt-4 flex items-center">
-          <h1 class="text-black">email hello1212@gmail.com</h1> 
-         </div>
-      </div>
-   </div>
-</div>
-
-<!-- component -->
-<!-- post card -->
-<div class="flex bg-white shadow-lg rounded-lg mx-4 mt-4 md:mx-auto my-56 max-w-xl md:max-w-2xl "><!--horizantil margin is just for display-->
-   <div class="flex items-start px-4 py-6">
-      <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="avatar">
-      <div class="">
-         <div class="flex items-center justify-between">
-            <h2 class="text-lg font-semibold text-gray-900 -mt-1">Brad Adams </h2>
-            <small class="text-sm text-gray-700">22h ago</small>
-         </div>
-         <p class="text-gray-700">Joined 12 SEP 2012. </p>
-         <p class="mt-3 text-gray-700 text-sm">
-            Lorem ipsum, dolor sit amet conse. Saepe optio minus rem dolor sit amet!
-         </p>
-         <div class="mt-4 flex items-center">
-            <div class="flex mr-2 text-gray-700 text-sm mr-3">
-               <svg fill="none" viewBox="0 0 24 24"  class="w-4 h-4 mr-1" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                </svg>
-               <span>12</span>
-            </div>
-            <div class="flex mr-2 text-gray-700 text-sm mr-8">
-               <svg fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-1" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/>
-               </svg>
-               <span>8</span>
-            </div>
-            <div class="flex mr-2 text-gray-700 text-sm mr-4">
-               <svg fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-1" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
-                </svg>
-               <span>share</span>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
+                        {{ __("You're manager") }}
+                        <!-- Manager section -->
                     @else
-                    {{ __("You're client") }} 
+                        {{ __("You're client") }}
+
+                        <!-- Client section -->
+                        <div class="max-w-md mx-auto"> <!-- Formning kengligini cheklash -->
+                            <form method="POST" action="" enctype="multipart/form-data" class="mt-6 space-y-4">
+                                @csrf
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Subject</label>
+                                    <input type="text" name="name" id="name" required
+                                        class="mt-1 block w-full px-4 py-2 bg-gray-100 dark:bg-gray-700 dark:text-gray-100 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring focus:ring-indigo-500 focus:outline-none">
+                                </div>
+                                
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">File</label>
+                                    <input type="file" name="file" id="file" required
+                                        class="mt-1 block w-full px-4 py-2 bg-gray-100 dark:bg-gray-700 dark:text-gray-100 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring focus:ring-indigo-500 focus:outline-none">
+                                </div>
+                                
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Xabar</label>
+                                    <textarea name="message" id="message" rows="4" required
+                                        class="mt-1 block w-full px-4 py-2 bg-gray-100 dark:bg-gray-700 dark:text-gray-100 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring focus:ring-indigo-500 focus:outline-none"></textarea>
+                                </div>
+                                
+                                <div class="flex justify-center"> <!-- Tugmani o'rtaga joylashtirish -->
+                                    <button type="submit"
+                                        class="px-4 py-2 bg-blue-500 text-white font-medium text-sm rounded-md hover:bg-blue-600 focus:ring focus:ring-blue-300 focus:outline-none">
+                                        Arizani Yuborish
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     @endif
-                  
                 </div>
             </div>
         </div>
